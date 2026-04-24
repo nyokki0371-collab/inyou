@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>陰陽分類トレーニング</title>
+    <meta name="description" content="東洋医学の陰陽学説に基づいた分類トレーニングアプリです。">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Google Fonts for better typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>陰陽分類トレーニング</h1>
+        <div class="controls">
+            <button id="show-guide-btn" class="guide-btn">使い方</button>
+            <button id="toggle-mode-btn" class="mode-btn">各問モード</button>
+            <button id="reset-btn" class="reset-btn">初期化</button>
+            <button id="judge-btn" class="judge-btn hidden">一括判定</button>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="lanes-wrapper">
+            <div id="yin-lane" class="lane yin-lane" data-type="陰">
+                <div class="lane-header">
+                    <h2>陰 (Yin)</h2>
+                    <span class="lane-icon">🌙</span>
+                </div>
+                <div class="drop-area" id="yin-drop-area"></div>
+            </div>
+            
+            <div id="yang-lane" class="lane yang-lane" data-type="陽">
+                <div class="lane-header">
+                    <h2>陽 (Yang)</h2>
+                    <span class="lane-icon">☀️</span>
+                </div>
+                <div class="drop-area" id="yang-drop-area"></div>
+            </div>
+        </div>
+
+        <div class="items-area">
+            <div class="items-header">
+                <h3>問題アイテム</h3>
+            </div>
+            <div id="pool-area" class="pool-area drop-area">
+                <!-- アイテムがJSで生成されてここに配置される -->
+            </div>
+        </div>
+    </main>
+
+    <!-- ガイドモーダル -->
+    <div id="guide-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <h2>使い方ガイド</h2>
+            <div class="guide-section">
+                <h3>🔄 操作方法</h3>
+                <p>下の「問題アイテム」から、上の「陰」か「陽」のレーンへアイテムを移動させてください。</p>
+                <ul>
+                    <li><strong>ドラッグ＆ドロップ：</strong> アイテムを長押ししてレーンに移動</li>
+                    <li><strong>タップ（スマホ向け）：</strong> 陰・陽のレーンをタップして選択状態にし、下のアイテムをタップして自動配置</li>
+                    <li>配置済みのアイテムをタップすると下部に戻ります。</li>
+                </ul>
+            </div>
+            <div class="guide-section">
+                <h3>⚙️ モード説明</h3>
+                <p><strong>各問モード：</strong> アイテムを配置した瞬間に正誤判定が行われます。<br>
+                <strong>全問モード：</strong> すべて配置し終わった後に一括で判定します。</p>
+            </div>
+            <div class="guide-section">
+                <h3>✅ 判定について</h3>
+                <p>正解のレーンに配置するとアイテムが<span style="color: #ef4444; font-weight: bold;">赤色</span>になり、間違ったレーンに配置すると<span style="color: #3b82f6; font-weight: bold;">青色</span>になります。</p>
+            </div>
+            <div class="modal-actions">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="never-show-again"> 次回以降表示しない
+                </label>
+                <button id="close-modal-btn" class="primary-btn">始める</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
